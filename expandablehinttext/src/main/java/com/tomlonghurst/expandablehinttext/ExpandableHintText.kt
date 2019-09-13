@@ -38,7 +38,7 @@ import kotlinx.coroutines.launch
 class ExpandableHintText : FrameLayout {
 
     private var inputMethodManager: InputMethodManager? = null
-    private lateinit var editText: ExpandableEditText
+    public lateinit var editText: ExpandableEditText
 
     /**
      * Get the Edit Text when it is rendered and ready
