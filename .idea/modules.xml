@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ExpandableHintText.iml" filepath="$PROJECT_DIR$/ExpandableHintText.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/ExpandableHintText-app.iml" filepath="$PROJECT_DIR$/app/ExpandableHintText-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GitHub-ExpandableHintText.iml" filepath="$PROJECT_DIR$/GitHub-ExpandableHintText.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/expandablehinttext/expandablehinttext.iml" filepath="$PROJECT_DIR$/expandablehinttext/expandablehinttext.iml" />
     </modules>

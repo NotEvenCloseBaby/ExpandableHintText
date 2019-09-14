@@ -152,8 +152,8 @@ class ExpandableHintText : FrameLayout {
 
             editText.post {
                 editText.setText(text)
-				if(text.length > 0) {
-					editText.setSelection((text.length - 1).toInt())
+				if(text!!.isNotEmpty()) {
+					editText.setSelection(text!!.length - 1)
 				}
                 invalidate()
             }
