@@ -1,61 +1,49 @@
 package com.tomlonghurst.expandablehinttext.extensions
 
+import android.view.HapticFeedbackConstants
 import android.view.View
-import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-internal fun View.beInvisibleIf(beInvisible: Boolean) = if (beInvisible) beInvisible() else beVisible()
+fun View.beInvisibleIf(beInvisible: Boolean) = if (beInvisible) beInvisible() else beVisible()
 
-internal fun View.beVisibleIf(beVisible: Boolean) = if (beVisible) beVisible() else beGone()
+fun View.beVisibleIf(beVisible: Boolean) = if (beVisible) beVisible() else beGone()
 
-internal fun View.beGoneIf(beGone: Boolean) = beVisibleIf(!beGone)
+fun View.beGoneIf(beGone: Boolean) = beVisibleIf(!beGone)
 
-internal fun View.beInvisible() {
+fun View.beInvisible() {
     GlobalScope.launch(Dispatchers.Main) {
         visibility = View.INVISIBLE
     }
 }
 
-internal fun View.beVisible() {
+fun View.beVisible() {
     GlobalScope.launch(Dispatchers.Main) {
         visibility = View.VISIBLE
     }
 }
 
-internal fun View.beGone() {
+fun View.beGone() {
     GlobalScope.launch(Dispatchers.Main) {
         visibility = View.GONE
     }
 }
 
-internal fun View.onGlobalLayout(callback: () -> Unit) {
+fun View.onGlobalLayout(callback: () -> Unit) {
     viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
         override fun onGlobalLayout() {
             viewTreeObserver.removeOnGlobalLayoutListener(this)
-            callback.invoke()
+            callback()
         }
     })
 }
 
-internal fun View.postOnMainThread(action: () -> Unit) {
-    GlobalScope.launch(Dispatchers.Main) {
-        post {
-            action.invoke()
-        }
-    }
-}
+fun View.isVisible() = visibility == View.VISIBLE
 
-internal fun View.remove() {
-    GlobalScope.launch(Dispatchers.Main) {
-        (parent as ViewGroup).removeView(this@remove)
-    }
-}
+fun View.isInvisible() = visibility == View.INVISIBLE
 
-internal fun View.isVisible() = visibility == View.VISIBLE
+fun View.isGone() = visibility == View.GONE
 
-internal fun View.isInvisible() = visibility == View.INVISIBLE
-
-internal fun View.isGone() = visibility == View.GONE
+fun View.performHapticFeedback() = performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY)
